@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="sarnoprogetto" company="3 persone" webLink="http://" view-date="2025-02-11" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.2.3200" locale="it_IT">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="200" order="0"/>
+        <field id="tpd4" name="Data dinizio" width="75" order="1"/>
+        <field id="tpd5" name="Data di fine" width="75" order="2"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="color.recent">
+            <![CDATA[#ff9900 #ff3300 #00cc00 #00ff33 #ff0033]]>
+        </option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nome" width="203" order="0"/>
+        <field id="1" name="Ruolo predefinito" width="78" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="sarnoproject" color="#8cb6ce" meeting="false" start="2025-02-17" duration="56" complete="0" thirdDate="2025-03-17" thirdDate-constraint="0" expand="true"/>
+        <task id="34" name="wireframe" color="#00cc00" meeting="false" start="2025-02-17" duration="10" complete="0" thirdDate="2025-02-04" thirdDate-constraint="0" expand="false">
+            <task id="37" name="Ricerca e Analisi" color="#8cb6ce" meeting="false" start="2025-02-17" duration="10" complete="0" thirdDate="2025-02-04" thirdDate-constraint="0" expand="true"/>
+            <task id="38" name="Progettazione Interfaccia Utente" color="#8cb6ce" meeting="false" start="2025-02-17" duration="9" complete="0" thirdDate="2025-02-04" thirdDate-constraint="0" expand="true"/>
+            <task id="39" name="Prototipazione" color="#8cb6ce" meeting="false" start="2025-02-17" duration="8" complete="0" thirdDate="2025-02-04" thirdDate-constraint="0" expand="true"/>
+            <task id="40" name="Revisione e Aggiornamenti" color="#8cb6ce" meeting="false" start="2025-02-17" duration="7" complete="0" thirdDate="2025-02-04" thirdDate-constraint="0" expand="true"/>
+            <task id="41" name="Consegna e Documentazione" color="#8cb6ce" meeting="false" start="2025-02-17" duration="6" complete="0" thirdDate="2025-02-04" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="42" name="progettazione del database" color="#ff3300" meeting="false" start="2025-02-17" duration="20" complete="0" thirdDate="2025-02-17" thirdDate-constraint="1" priority="2" expand="false">
+            <task id="43" name="Analisi dei Requisiti del Database" color="#8cb6ce" meeting="false" start="2025-02-17" duration="20" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="44" name="Progettazione Logica del Database" color="#8cb6ce" meeting="false" start="2025-02-17" duration="19" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="45" name="Progettazione Fisica del Database" color="#8cb6ce" meeting="false" start="2025-02-17" duration="18" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="46" name="Implementazione del Database" color="#8cb6ce" meeting="false" start="2025-02-17" duration="17" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="47" name="Test e Validazione" color="#8cb6ce" meeting="false" start="2025-02-17" duration="16" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="48" name="Consegna e Documentazione" color="#8cb6ce" meeting="false" start="2025-02-17" duration="15" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="49" name="progettazione della pagina web" color="#ff9900" meeting="false" start="2025-02-17" duration="40" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" priority="4" expand="false">
+            <task id="50" name="Analisi dei Requisiti per la Pagina Web" color="#8cb6ce" meeting="false" start="2025-02-17" duration="40" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="51" name="Progettazione dell'Architettura dell'Informazione" color="#8cb6ce" meeting="false" start="2025-02-17" duration="39" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="false"/>
+            <task id="52" name="Progettazione Wireframe della Pagina" color="#8cb6ce" meeting="false" start="2025-02-17" duration="38" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="53" name="Design Grafico e Interattivo" color="#8cb6ce" meeting="false" start="2025-02-17" duration="37" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="54" name="Implementazione Front-End" color="#8cb6ce" meeting="false" start="2025-02-17" duration="36" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="55" name="Test e Ottimizzazione" color="#8cb6ce" meeting="false" start="2025-02-17" duration="35" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="56" name="Consegna e Documentazione" color="#8cb6ce" meeting="false" start="2025-02-17" duration="34" complete="0" thirdDate="2025-01-22" thirdDate-constraint="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="0" name="noboa" function="Default:1" contacts="noboa@gmail.com" phone="3470686066">
+            <rate name="standard" value="70"/>
+        </resource>
+        <resource id="1" name="frasca" function="Default:1" contacts="frasca@gmail.com" phone="3470686067">
+            <rate name="standard" value="70"/>
+        </resource>
+        <resource id="2" name="almeida" function="Default:1" contacts="almeida@gmail.com" phone="3470686062">
+            <rate name="standard" value="70"/>
+        </resource>
+    </resources>
+    <allocations>
+        <allocation task-id="34" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="37" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="38" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="39" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="40" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="41" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="42" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="43" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="44" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="45" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="46" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="47" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="48" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="49" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="50" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="51" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="52" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="53" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="54" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="55" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="56" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+    </allocations>
+    <vacations>
+        <vacation start="2025-03-22" end="2025-03-24" resourceid="0"/>
+        <vacation start="2025-03-29" end="2025-03-31" resourceid="0"/>
+        <vacation start="2025-04-05" end="2025-04-07" resourceid="0"/>
+        <vacation start="2025-04-12" end="2025-04-14" resourceid="0"/>
+        <vacation start="2025-04-17" end="2025-04-28" resourceid="0"/>
+        <vacation start="2025-05-01" end="2025-05-05" resourceid="0"/>
+        <vacation start="2025-02-22" end="2025-03-24" resourceid="1"/>
+        <vacation start="2025-03-01" end="2025-03-03" resourceid="1"/>
+        <vacation start="2025-03-08" end="2025-03-10" resourceid="1"/>
+        <vacation start="2025-03-15" end="2025-03-17" resourceid="1"/>
+        <vacation start="2025-03-22" end="2025-03-24" resourceid="1"/>
+        <vacation start="2025-03-29" end="2025-03-31" resourceid="1"/>
+        <vacation start="2025-04-05" end="2025-04-07" resourceid="1"/>
+        <vacation start="2025-04-12" end="2025-04-14" resourceid="1"/>
+        <vacation start="2025-04-17" end="2025-04-28" resourceid="1"/>
+        <vacation start="2025-05-01" end="2025-05-05" resourceid="1"/>
+        <vacation start="2025-03-22" end="2025-03-24" resourceid="2"/>
+        <vacation start="2025-03-15" end="2025-03-17" resourceid="2"/>
+        <vacation start="2025-03-08" end="2025-03-10" resourceid="2"/>
+        <vacation start="2025-03-01" end="2025-03-03" resourceid="2"/>
+        <vacation start="2025-02-22" end="2025-02-24" resourceid="2"/>
+        <vacation start="2025-04-05" end="2025-04-07" resourceid="2"/>
+        <vacation start="2025-04-12" end="2025-04-14" resourceid="2"/>
+        <vacation start="2025-04-17" end="2025-04-26" resourceid="2"/>
+        <vacation start="2025-05-01" end="2025-05-05" resourceid="2"/>
+    </vacations>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
