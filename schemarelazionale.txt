@@ -1,0 +1,15 @@
+utenti (id_utente, email, password, nome, cognome, tipo (enum: 'prof', 'studente', 'amministratore'))
+
+classi (id_classe, nome_classe)
+
+materie (id_materia, nome_materia)
+
+insegnamenti (id_insegnamento, id_professore, id_materia, id_classe)
+
+orari (id_orario, id_insegnamento, giorno, ora, ora_inizio, ora_fine)
+
+voti (id_voto, id_studente, id_materia, id_professore, voto, data_voto, note)
+
+studenti_classi (id_studente_classe, id_studente, id_classe)
+
+

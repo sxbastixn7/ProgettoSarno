@@ -1,0 +1,72 @@
+-- Tabella utenti (per tutti i tipi: amministratori, professori, studenti)
+CREATE TABLE utenti (
+    id_utente INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL, (senza hash)
+    nome VARCHAR(50) NOT NULL,
+    cognome VARCHAR(50) NOT NULL,
+    tipo ENUM('amministratore', 'prof', 'studente') NOT NULL,
+);
+
+-- Tabella classi
+CREATE TABLE classi (
+    id_classe INT AUTO_INCREMENT PRIMARY KEY,
+    nome_classe VARCHAR(20) NOT NULL UNIQUE,
+);
+
+-- Tabella materie
+CREATE TABLE materie (
+    id_materia INT AUTO_INCREMENT PRIMARY KEY,
+    nome_materia VARCHAR(50) NOT NULL UNIQUE,
+);
+
+-- Tabella di relazione professori-materie-classi
+CREATE TABLE insegnamenti (
+    id_insegnamento INT AUTO_INCREMENT PRIMARY KEY,
+    id_professore INT NOT NULL,
+    id_materia INT NOT NULL,
+    id_classe INT NOT NULL,
+    FOREIGN KEY (id_professore) REFERENCES utenti(id_utente),
+    FOREIGN KEY (id_materia) REFERENCES materie(id_materia),
+    FOREIGN KEY (id_classe) REFERENCES classi(id_classe),
+    UNIQUE KEY insegnamento_unico (id_professore, id_materia, id_classe)
+);
+
+-- Tabella orari
+CREATE TABLE orari (
+    id_orario INT AUTO_INCREMENT PRIMARY KEY,
+    id_insegnamento INT NOT NULL,
+    id_classe INT NOT NULL,
+    id_professore INT NOT NULL,
+    giorno ENUM('Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì') NOT NULL,
+    ora INT NOT NULL,
+    FOREIGN KEY (id_insegnamento) REFERENCES insegnamenti(id_insegnamento),
+    FOREIGN KEY (id_classe) REFERENCES classi (id_classe),
+    FOREIGN KEY (id_professore) REFERENCES utenti (id_utente),
+    CHECK (ora BETWEEN 1 AND 6)
+);
+
+-- Tabella voti (se necessario)
+CREATE TABLE voti (
+    id_voto INT AUTO_INCREMENT PRIMARY KEY,
+    id_studente INT NOT NULL,
+    id_materia INT NOT NULL,
+    id_professore INT NOT NULL,
+    voto DECIMAL(4,2) NOT NULL,
+    data_voto DATE NOT NULL,
+    note TEXT,
+    FOREIGN KEY (id_studente) REFERENCES utenti(id_utente),
+    FOREIGN KEY (id_materia) REFERENCES materie(id_materia),
+    FOREIGN KEY (id_professore) REFERENCES utenti(id_utente)
+);
+
+-- Tabella di relazione per l'iscrizione degli studenti alle classi
+CREATE TABLE studenti_classi (
+    id_studente_classe INT AUTO_INCREMENT PRIMARY KEY,
+    id_studente INT NOT NULL,
+    id_classe INT NOT NULL,
+    FOREIGN KEY (id_studente) REFERENCES utenti(id_utente),
+    FOREIGN KEY (id_classe) REFERENCES classi(id_classe),
+    UNIQUE KEY studente_classe_unica (id_studente, id_classe)
+);
+
