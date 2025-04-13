@@ -12,6 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 }
 
-header("Location: dashboard_admin.php");
+header("Location: gestione_insegnamento.php");
 exit;
 ?>

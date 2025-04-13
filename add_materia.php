@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Esegue la query
             if ($stmt->execute()) {
                 // Inserimento riuscito, reindirizza alla dashboard
-                header("Location: dashboard_admin.php");
+                header("Location: gestione_materie.php");
                 exit();
             } else {
                 $error = "Si è verificato un errore durante l'inserimento della materia.";

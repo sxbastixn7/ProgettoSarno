@@ -2,7 +2,6 @@
 session_start();
 require_once 'config.php';
 
-// Verifica autenticazione e tipo utente
 if (!isset($_SESSION['id_utente']) || $_SESSION['tipo'] != 'prof') {
     header("Location: login.php");
     exit();
@@ -29,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['aggiungi_orario'])) {
             $id_materia = $row['id_materia'];
             
             $insert = $conn->prepare("INSERT INTO orari (id_insegnamento, id_classe, id_professore, giorno, ora) 
-                                     VALUES (?, ?, ?, ?, ?)");
+                                    VALUES (?, ?, ?, ?, ?)");
             $insert->bind_param("iiisi", $id_insegnamento, $id_classe, $id_professore, $giorno, $ora);
             
             if ($insert->execute()) {
@@ -54,9 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['aggiungi_voto'])) {
 
     if ($id_studente && $id_insegnamento && $voto) {
         $stmt = $conn->prepare("SELECT i.id_materia 
-                               FROM studenti_classi sc
-                               JOIN insegnamenti i ON sc.id_classe = i.id_classe
-                               WHERE sc.id_studente = ? AND i.id_insegnamento = ? AND i.id_professore = ?");
+                                FROM studenti_classi sc
+                                JOIN insegnamenti i ON sc.id_classe = i.id_classe
+                                WHERE sc.id_studente = ? AND i.id_insegnamento = ? AND i.id_professore = ?");
         $stmt->bind_param("iii", $id_studente, $id_insegnamento, $id_professore);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -82,14 +81,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['aggiungi_voto'])) {
     }
 }
 
-// RECUPERA DATI PER DASHBOARD
+// RECUPERA INSEGNAMENTI DEL PROFESSORE
 $insegnamenti = $conn->query("SELECT i.id_insegnamento, m.nome_materia, c.nome_classe 
-                             FROM insegnamenti i
-                             JOIN materie m ON i.id_materia = m.id_materia
-                             JOIN classi c ON i.id_classe = c.id_classe
-                             WHERE i.id_professore = $id_professore
-                             ORDER BY c.nome_classe, m.nome_materia");
+                            FROM insegnamenti i
+                            JOIN materie m ON i.id_materia = m.id_materia
+                            JOIN classi c ON i.id_classe = c.id_classe
+                            WHERE i.id_professore = $id_professore
+                            ORDER BY c.nome_classe, m.nome_materia");
 
+// RECUPERA ORARIO DEL PROFESSORE
 $orario_prof = $conn->query("SELECT o.giorno, o.ora, m.nome_materia, c.nome_classe 
                             FROM orari o
                             JOIN insegnamenti i ON o.id_insegnamento = i.id_insegnamento
@@ -98,14 +98,16 @@ $orario_prof = $conn->query("SELECT o.giorno, o.ora, m.nome_materia, c.nome_clas
                             WHERE o.id_professore = $id_professore
                             ORDER BY FIELD(o.giorno, 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì'), o.ora");
 
+// RECUPERA STUDENTI PER INSERIMENTO VOTI
 $studenti = $conn->query("SELECT u.id_utente, u.nome, u.cognome, c.nome_classe 
-                         FROM utenti u
-                         JOIN studenti_classi sc ON u.id_utente = sc.id_studente
-                         JOIN classi c ON sc.id_classe = c.id_classe
-                         JOIN insegnamenti i ON c.id_classe = i.id_classe
-                         WHERE i.id_professore = $id_professore AND u.tipo = 'studente'
-                         ORDER BY c.nome_classe, u.cognome, u.nome");
+                        FROM utenti u
+                        JOIN studenti_classi sc ON u.id_utente = sc.id_studente
+                        JOIN classi c ON sc.id_classe = c.id_classe
+                        JOIN insegnamenti i ON c.id_classe = i.id_classe
+                        WHERE i.id_professore = $id_professore AND u.tipo = 'studente'
+                        ORDER BY c.nome_classe, u.cognome, u.nome");
 
+// RECUPERA CLASSI DEL PROFESSORE
 $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe 
                             FROM classi c
                             JOIN insegnamenti i ON c.id_classe = i.id_classe
@@ -130,7 +132,7 @@ $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe
             --danger-color: #e74c3c;
             --border-radius: 8px;
             --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -170,156 +172,6 @@ $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe
             font-weight: 600;
         }
 
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .card-header:hover {
-            background-color: #2980b9;
-        }
-
-        .card-header.active {
-            background-color: var(--secondary-color);
-        }
-
-        .card-header h2 {
-            color: white;
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        .toggle-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .card-header.active .toggle-icon {
-            transform: rotate(180deg);
-        }
-
-        .card-content {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: 
-                max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.4s ease,
-                transform 0.4s ease,
-                padding 0.3s ease;
-            padding: 0 20px;
-        }
-
-        .card-content.expanded {
-            max-height: 5000px;
-            opacity: 1;
-            transform: translateY(0);
-            padding: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-
-        select, input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 16px;
-            transition: var(--transition);
-        }
-
-        select:focus, input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 500;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
         .alert {
             padding: 15px;
             border-radius: var(--border-radius);
@@ -354,6 +206,116 @@ $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe
             transform: translateY(-2px);
         }
 
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-header:hover {
+            background-color: #2980b9;
+        }
+
+        .card-header.active {
+            background-color: var(--secondary-color);
+        }
+
+        .card-header h2 {
+            color: white;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .card-content.expanded {
+            max-height: 5000px;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
         .class-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -366,55 +328,12 @@ $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe
             border-left: 4px solid var(--primary-color);
             padding: 15px;
             border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .class-item:hover {
-            background-color: #e9ecef;
-            transform: translateY(-3px);
-        }
-
-        .class-item h3 {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-
-        .class-item ul {
-            padding-left: 20px;
-            margin-top: 8px;
-        }
-
-        .class-item li {
-            margin-bottom: 5px;
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            header {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-            
             .card-container {
                 grid-template-columns: 1fr;
             }
-            
-            .class-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card {
-            animation: fadeIn 0.5s ease-out;
         }
     </style>
 </head>
@@ -437,11 +356,11 @@ $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe
         <div class="card-container">
             <!-- Card Gestione Orario -->
             <div class="card">
-                <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-header" onclick="toggleExclusive('orario')">
                     <h2>Gestione Orario</h2>
-                    <span class="toggle-icon">▼</span>
+                    <span class="toggle-icon" id="orario-icon">▼</span>
                 </div>
-                <div class="card-content">
+                <div class="card-content" id="orario-content">
                     <form method="post">
                         <div class="form-group">
                             <label>Insegnamento:
@@ -498,11 +417,11 @@ $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe
             
             <!-- Card Inserimento Voti -->
             <div class="card">
-                <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-header" onclick="toggleExclusive('voti')">
                     <h2>Inserimento Voti</h2>
-                    <span class="toggle-icon">▼</span>
+                    <span class="toggle-icon" id="voti-icon">▼</span>
                 </div>
-                <div class="card-content">
+                <div class="card-content" id="voti-content">
                     <form method="post">
                         <div class="form-group">
                             <label>Studente:
@@ -548,11 +467,11 @@ $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe
             
             <!-- Card Visualizzazione Classi -->
             <div class="card">
-                <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-header" onclick="toggleExclusive('classi')">
                     <h2>Le tue Classi</h2>
-                    <span class="toggle-icon">▼</span>
+                    <span class="toggle-icon" id="classi-icon">▼</span>
                 </div>
-                <div class="card-content">
+                <div class="card-content" id="classi-content">
                     <div class="class-grid">
                         <?php while ($classe = $classi_prof->fetch_assoc()): ?>
                             <div class="class-item">
@@ -578,40 +497,38 @@ $classi_prof = $conn->query("SELECT DISTINCT c.id_classe, c.nome_classe
     </div>
 
     <script>
-    function toggleCard(header) {
-        const card = header.parentElement;
-        const content = card.querySelector('.card-content');
-        const icon = card.querySelector('.toggle-icon');
+    function toggleExclusive(cardType) {
+        // Lista di tutte le card
+        const cards = ['orario', 'voti', 'classi'];
         
-        // Se la card è già aperta, la chiudo
-        if (content.classList.contains('expanded')) {
-            content.classList.remove('expanded');
-            header.classList.remove('active');
-            icon.textContent = '▼';
-            return;
-        }
-        
-        // Chiudo tutte le altre card aperte
-        document.querySelectorAll('.card-content.expanded').forEach(openContent => {
-            if (openContent !== content) {
-                openContent.classList.remove('expanded');
-                openContent.previousElementSibling.classList.remove('active');
-                openContent.previousElementSibling.querySelector('.toggle-icon').textContent = '▼';
+        cards.forEach(type => {
+            const content = document.getElementById(type + '-content');
+            const icon = document.getElementById(type + '-icon');
+            const header = content.previousElementSibling;
+            
+            if (type === cardType) {
+                // Toggle della card cliccata
+                if (content.classList.contains('expanded')) {
+                    content.classList.remove('expanded');
+                    header.classList.remove('active');
+                    icon.textContent = '▼';
+                } else {
+                    content.classList.add('expanded');
+                    header.classList.add('active');
+                    icon.textContent = '▲';
+                }
+            } else {
+                // Chiudi tutte le altre card
+                content.classList.remove('expanded');
+                header.classList.remove('active');
+                icon.textContent = '▼';
             }
         });
-        
-        // Apro la card cliccata
-        content.classList.add('expanded');
-        header.classList.add('active');
-        icon.textContent = '▲';
-        
-        // Scroll smooth alla card aperta
-        content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // Apri la prima card di default
+    // Apri solo la prima card all'avvio
     document.addEventListener('DOMContentLoaded', function() {
-        document.querySelector('.card-header').click();
+        toggleExclusive('orario');
     });
     </script>
 </body>

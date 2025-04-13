@@ -54,6 +54,7 @@ main {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     border-top: 6px solid #007bff; /* Barra superiore blu per differenziare le card */
+    text-decoration: none;
 }
 
 .card:hover {
@@ -69,6 +70,7 @@ main {
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
 .card-header:hover {
@@ -166,10 +168,12 @@ button:active {
 
     .card-header {
         font-size: 18px;
+        text-decoration: none;
     }
 
     .card {
         border-radius: 10px;
+        text-decoration: none;
     }
 
     .form-inline input,
@@ -184,3 +188,6 @@ button:active {
     }
 }
 
+.card-link {
+    text-decoration: none;
+}

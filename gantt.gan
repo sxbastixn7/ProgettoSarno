@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="sarnoprogetto" company="3 persone" webLink="http://" view-date="2025-02-09" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.3.3316" locale="it_IT">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="200" order="0"/>
+        <field id="tpd4" name="Data d'inizio" width="75" order="1"/>
+        <field id="tpd5" name="Data di fine" width="75" order="2"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <option id="color.recent"><![CDATA[#ff9900 #ff3300 #00cc00 #00ff33 #ff0033]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="3" name="Telefono" width="53" order="0"/>
+        <field id="2" name="posta elettronica" width="52" order="1"/>
+        <field id="0" name="Nome" width="191" order="2"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" uid="8d62076aba574fe6acb71fd673edc2b0" name="sarnoprogetto" meeting="false" start="2025-02-10" duration="74" complete="0" expand="true">
+            <task id="1" uid="7485d80db52c4b1e9f7e593d447788cd" name="fase 1: progettazione wireframe" meeting="false" start="2025-02-10" duration="10" complete="0" expand="true">
+                <task id="2" uid="4cafbb7118354ac68f2f6fff217f47d6" name="brainstorming" meeting="false" start="2025-02-10" duration="2" complete="0" expand="true"/>
+                <task id="3" uid="3504098427a94b50b0ee44f3351839f0" name="bozza iniziale (carta o software)" meeting="false" start="2025-02-12" duration="2" complete="0" expand="true"/>
+                <task id="4" uid="dc334a0924864ca985b6991d18fae64b" name="feedback gruppo" meeting="false" start="2025-02-14" duration="1" complete="0" expand="true"/>
+                <task id="5" uid="3c0b0482463c4f758fc0a548b50c610a" name="modifica wireframe" meeting="false" start="2025-02-15" duration="2" complete="0" expand="true"/>
+                <task id="6" uid="786cf2e07c78497fb202bd3d95dcfe15" name="wireframe finale" meeting="false" start="2025-02-17" duration="3" complete="0" expand="true"/>
+            </task>
+            <task id="10" uid="ebe3f9a0119c4ebbaaebcaf784caca2f" name="fase 2: progettazione database" meeting="false" start="2025-02-18" duration="15" complete="0" expand="true">
+                <task id="11" uid="e6a1d36466624e57a083365d55dec119" name="raccolta requisiti" meeting="false" start="2025-02-18" duration="2" complete="0" expand="true"/>
+                <task id="12" uid="f6787947c265481ca26f40c95bdb504f" name="identificazione entità e relazioni" meeting="false" start="2025-02-20" duration="2" complete="0" expand="true"/>
+                <task id="13" uid="6127ed4f27a448a1bfac016b90868363" name="creazione schema ER" meeting="false" start="2025-02-22" duration="3" complete="0" expand="true"/>
+                <task id="14" uid="2442bbf987604193b291e54cd9d08998" name="normalizzazione dati" meeting="false" start="2025-02-25" duration="2" complete="0" expand="true"/>
+                <task id="15" uid="2fe4fa5fa87d439d888d8a48fc55e917" name="schema relazionale" meeting="false" start="2025-02-27" duration="2" complete="0" expand="true"/>
+                <task id="16" uid="42adab2d76ee486eac18e6fd40624e37" name="script SQL creazione DB" meeting="false" start="2025-03-01" duration="2" complete="0" expand="true"/>
+                <task id="17" uid="82a7ad9767c6416a89ba074840355d38" name="verifica e test database" meeting="false" start="2025-03-03" duration="2" complete="0" expand="true"/>
+            </task>
+            <task id="20" uid="c6986b01e20b4466afe2314ecdadf2ed" name="fase 3: sviluppo pagina web" meeting="false" start="2025-03-05" duration="27" complete="0" expand="true">
+                <task id="21" uid="324774985b044ee9a8aedeff506e9a6e" name="creazione struttura HTML base" meeting="false" start="2025-03-05" duration="3" complete="0" expand="true"/>
+                <task id="22" uid="6cc380f1300843dca16ffdf8b66ecf59" name="inserimento sezioni principali" meeting="false" start="2025-03-08" duration="3" complete="0" expand="true"/>
+                <task id="23" uid="2892bf10aa5f450eae64ce414bf8b717" name="implementazione header e menu" meeting="false" start="2025-03-11" duration="2" complete="0" expand="true"/>
+                <task id="24" uid="e15f634d07a94d82a951d71022f8cec0" name="implementazione PHP" meeting="false" start="2025-03-13" duration="2" complete="0" expand="true"/>
+                <task id="25" uid="a6f442ce312646adaa84b750617dce5b" name="Funzionalità PHP + mysqli" meeting="false" start="2025-03-15" duration="2" complete="0" expand="true"/>
+                <task id="26" uid="27df25743e534bf2a118a2b15c12e055" name="FrontEnd" meeting="false" start="2025-03-17" duration="4" complete="0" expand="true"/>
+                <task id="27" uid="32302205c3924d9181b775f612f819fc" name="Backend" meeting="false" start="2025-03-21" duration="4" complete="0" expand="true"/>
+                <task id="28" uid="eee3093672b448f98e962b1a08d76456" name="test responsive mobile e desktop" meeting="false" start="2025-03-25" duration="2" complete="0" expand="true"/>
+                <task id="29" uid="b325831d8a3341a5adab70806bd0a35a" name="ottimizzazione codice" meeting="false" start="2025-03-27" duration="2" complete="0" expand="true"/>
+                <task id="30" uid="8202c47fd9514b578e75c2f550a22273" name="debugging finale" meeting="false" start="2025-03-29" duration="2" complete="0" expand="true"/>
+                <task id="31" uid="74049fb30d1549bfa0b5bcc1d71c6325" name="versione beta completa" meeting="false" start="2025-03-31" duration="1" complete="0" expand="true"/>
+            </task>
+            <task id="40" uid="215030c9ae234fef8ef09302ca6d2405" name="fase 4: revisione, testing e consegna" meeting="false" start="2025-04-02" duration="23" complete="0" expand="true">
+                <task id="41" uid="f475f4b244a34d48aaff0d98c5ab3d2f" name="revisione grafica e accessibilità" meeting="false" start="2025-04-02" duration="3" complete="0" expand="true"/>
+                <task id="42" uid="df844b165f82487b9ec12260adcfa323" name="validazione HTML/CSS/PHP" meeting="false" start="2025-04-05" duration="2" complete="0" expand="true"/>
+                <task id="43" uid="bc40db902bd54de49cc55c6acf6f51d0" name="test funzionalità database" meeting="false" start="2025-04-07" duration="2" complete="0" expand="true"/>
+                <task id="44" uid="1f19314d8fdf4bd797117202d9765fac" name="testing utenti interni (gruppo)" meeting="false" start="2025-04-09" duration="3" complete="0" expand="true"/>
+                <task id="45" uid="a9fcc7cb57fc4d5687f93239b9358270" name="raccolta feedback finale" meeting="false" start="2025-04-12" duration="2" complete="0" expand="true"/>
+                <task id="46" uid="01238c16dfc0489abaa2b7f2c1a93c07" name="correzioni finali" meeting="false" start="2025-04-14" duration="4" complete="0" expand="true"/>
+                <task id="47" uid="a9059d194dfa41d99a25ddc4ac1f0e2c" name="preparazione documentazione" meeting="false" start="2025-04-18" duration="4" complete="0" expand="true"/>
+                <task id="48" uid="2350288f77d5411dafff633941467c6a" name="esportazione materiale" meeting="false" start="2025-04-22" duration="2" complete="0" expand="true"/>
+                <task id="49" uid="c8e41c24520f46bea433474d5a3b9a27" name="consegna finale" meeting="false" start="2025-04-24" duration="1" complete="0" expand="true"/>
+            </task>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="1" name="Noboa" function="Default:0" contacts="" phone=""/>
+        <resource id="2" name="Frasca" function="Default:0" contacts="" phone=""/>
+        <resource id="3" name="Almeida" function="Default:0" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="2" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="5" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="11" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="14" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="17" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="23" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="26" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="29" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="44" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="47" resource-id="1" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="1" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="10" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="0" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="6" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="12" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="15" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="21" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="24" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="27" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="30" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="42" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="45" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="48" resource-id="2" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="2" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="1" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="10" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="13" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="16" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="22" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="25" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="28" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="31" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="43" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="46" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="49" resource-id="3" function="Default:0" responsible="false" load="0.0"/>
+        <allocation task-id="2" resource-id="3" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="1" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="10" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="20" resource-id="3" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="40" resource-id="3" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="3" function="Default:1" responsible="true" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
