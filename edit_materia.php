@@ -43,8 +43,8 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bind_param("si", $nome_materia, $id_materia);
             if ($stmt->execute()) {
-                // Aggiornamento riuscito, reindirizza alla dashboard
-                header("Location: dashboard_admin.php");
+                // Aggiornamento riuscito, reindirizza alla gestione
+                header("Location: gestione_materie.php");
                 exit();
             } else {
                 $error = "Si è verificato un errore durante l'aggiornamento della materia.";
